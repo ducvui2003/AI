@@ -22,12 +22,16 @@ public abstract class Graph {
     }
 
     public void loadNodes() {
+        for (Integer key : hashtable.keySet()) {
+            Node node = new Node(key + "");
+            nodes.add(node);
+        }
+        System.out.println(hashtable.keySet());
         for (Integer key : hashtable.keySet()
         ) {
-            Node node = new Node(key + "");
-            Iterator<String> iterator = hashtable.get(key).iterator();
-            while (iterator.hasNext()) {
-                node.addNeighbour(iterator.next());
+            Node node = getNode(key + "");
+            for (String s : hashtable.get(key)) {
+                node.addNeighbour(getNode(s));
             }
             this.nodes.add(node);
         }
@@ -55,8 +59,10 @@ public abstract class Graph {
     public abstract int degreeOutside(int src);
 
     public Object[] findPath(AbstractAlgorithmFindPath algorithm) {
-        algorithm.setGraph(this);
-        Object[] path=  algorithm.findPath();
+//        algorithm.setGraph(this);
+        Object[] path = algorithm.findPath();
+        Utils.getINSTANCE().resetVisitedNode(this);
+        Utils.getINSTANCE().resetParentNode(this);
         return path;
     }
 

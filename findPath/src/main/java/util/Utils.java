@@ -91,15 +91,14 @@ public class Utils {
         return "Hash Table: \n" + stringBuilder.toString();
     }
 
-    public Object[] path(Node node, String start, Graph graph) {
+    public Object[] path(Node node, String start) {
         LinkedList linkedList = new LinkedList();
         while (!node.getName().equals(start)) {
             linkedList.addFirst(node.getName());
-            node = graph.getNode(node.getParent());
+            node = node.getParent();
         }
         linkedList.addFirst(start);
-        resetVisitedNode(graph);
-        resetParentNode(graph);
+
         return linkedList.toArray();
     }
 

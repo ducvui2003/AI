@@ -16,8 +16,8 @@ public class Test {
 //        System.out.println(graph);
 
         Graph graphPath = GraphFactory.getINSTANCE().makeGraph("D:\\University\\Year 3\\AI\\code\\findPath\\src\\test\\graph\\path.txt");
-        System.out.println(Utils.getINSTANCE().checkTypeGraph(graphPath.getHashtable()));
-        System.out.println(Utils.getINSTANCE().printHashTable(graphPath.getHashtable()));
+//        System.out.println(Utils.getINSTANCE().checkTypeGraph(graphPath.getHashtable()));
+//        System.out.println(Utils.getINSTANCE().printHashTable(graphPath.getHashtable()));
 
 //        System.out.println(Arrays.toString(new BFS(graphPath, "8", "6").findPath()));
 //        Utils.getINSTANCE().resetParentNode(graphPath);
@@ -26,7 +26,7 @@ public class Test {
 //        Utils.getINSTANCE().resetParentNode(graphPath);
 //        Utils.getINSTANCE().resetVisitedNode(graphPath);
 
-        System.out.println("BFS: " + Arrays.toString(graphPath.findPath(new BFS("8", "6"))));
-        System.out.println("DFS: " + Arrays.toString(graphPath.findPath(new DFS("8", "6"))));
+        System.out.println("BFS: " + Arrays.toString(graphPath.findPath(new BFS(graphPath, "8", "6"))));
+        System.out.println("DFS: " + Arrays.toString(graphPath.findPath(new DFS(graphPath, "8", "6"))));
     }
 }
