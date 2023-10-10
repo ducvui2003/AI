@@ -9,9 +9,14 @@ public class Node {
     private List<Node> neighbours = new ArrayList<>();
     private int value;
     private boolean visited = false;
+    //N Hau
 
     public Node(String name) {
         this.name = name;
+    }
+
+    public Node(int n) {
+        this.value = n;
     }
 
 
@@ -68,4 +73,6 @@ public class Node {
     public String toString() {
         return "Parent Node: " + parent + "Visited:" + visited + "Name node: " + name + "\tChild Nodes: " + neighbours.toString() + "\n";
     }
+
+
 }
