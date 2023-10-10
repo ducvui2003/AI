@@ -5,18 +5,18 @@ import base.Node;
 
 public abstract class AbstractAlgorithmFindPath {
     protected Graph graph;
-    protected String start;
-    protected String end;
+    protected Node start;
+    protected Node end;
 
     public AbstractAlgorithmFindPath(Graph graph, String start, String end) {
         this.graph = graph;
-        this.start = start;
-        this.end = end;
+        this.start = graph.getNode(start);
+        this.end = graph.getNode(end);
     }
 
     public AbstractAlgorithmFindPath(String start, String end) {
-        this.start = start;
-        this.end = end;
+        this.start = graph.getNode(start);
+        this.end = graph.getNode(end);
     }
 
     public abstract Object[] findPath();
@@ -29,20 +29,19 @@ public abstract class AbstractAlgorithmFindPath {
         this.graph = graph;
     }
 
-    public String getStart() {
+    public Node getStart() {
         return start;
     }
 
-    public void setStart(String start) {
+    public void setStart(Node start) {
         this.start = start;
     }
 
-    public String getEnd() {
+    public Node getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
+    public void setEnd(Node end) {
         this.end = end;
     }
-
 }

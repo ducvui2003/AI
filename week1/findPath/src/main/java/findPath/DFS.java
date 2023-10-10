@@ -18,25 +18,25 @@ public class DFS extends AbstractAlgorithmFindPath {
 
     @Override
     public Object[] findPath() {
-        ArrayList<String> result = new ArrayList<>();
-        Stack<String> stack = new Stack<>();
-        if (start.equals(end)) {
+        ArrayList<Node> result = new ArrayList<>();
+        Stack<Node> stack = new Stack<>();
+        if (start == end) {
             result.add(start);
             return result.toArray();
         }
+        start.setVisited(true);
         stack.add(start);
-        graph.getNode(start).setVisited(true);
         while (!stack.isEmpty()) {
-            String q = stack.pop();
-            List<String> adjective = graph.getNode(q).getNeighbours();
+            Node q = stack.pop();
+            List<Node> adjective = q.getNeighbours();
             for (int i = adjective.size() - 1; i >= 0; i--) {
-                Node currentNode = graph.getNode(adjective.get(i));
+                Node currentNode = adjective.get(i);
                 if (!currentNode.isVisited()) {
                     currentNode.setParent(q);
-                    if (adjective.get(i).equals(end)) {
-                        return Utils.getINSTANCE().path(graph.getNode(adjective.get(i)), start, graph);
+                    if (currentNode == end) {
+                        return Utils.getINSTANCE().path(adjective.get(i), start.getName());
                     } else {
-                        graph.getNode(adjective.get(i)).setVisited(true);
+                        currentNode.setVisited(true);
                         stack.add(adjective.get(i));
                     }
                 }
