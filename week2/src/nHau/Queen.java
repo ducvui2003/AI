@@ -1,6 +1,9 @@
 package nHau;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Queen {
     private int n ;
     private Node goal;
@@ -24,5 +27,13 @@ public class Queen {
         Queen q = new Queen(8);
         q.bfs();
 //        q.dfs();
+//        List<Integer> list = new ArrayList<>();
+//        list.add(1);
+//        list.add(2);
+//        list.add(3);
+//        List<Integer> list2 = new ArrayList<>(list);
+//        list.remove((Integer) 1);
+//        System.out.println(list);
+//        System.out.println(list2);
     }
 }

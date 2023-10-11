@@ -21,8 +21,8 @@ public class Node {
     }
 
     public List<Integer> place(int x) {
-        List<Integer> stateClone = new ArrayList<>();
-        state.forEach(node -> stateClone.add(node));
+        //Clone
+        List<Integer> stateClone = new ArrayList<>(state);
         stateClone.add(x);
         if (isValid(stateClone)) {
             return stateClone;
@@ -32,12 +32,13 @@ public class Node {
     }
 
     public List<Node> getNeighbours() {
-        if (state.size() == 0) {
+        if (this.state.size() == this.n) {
             return null;
         }
-        for (int i = 0; i < state.size(); i++) {
-            if (place(i) != null) {
-                Node node = new Node(i, state);
+        for (int i = 0; i < this.n; i++) {
+            List<Integer> newState = place(i);
+            if (newState != null) {
+                Node node = new Node(n, newState);
                 this.addNeighbour(node);
             }
         }
@@ -52,15 +53,22 @@ public class Node {
         if (state.size() == 1) {
             return true;
         }
-        if (state.size() > 1) {
-            int numberCompare = state.get(state.size() - 1);
+
+        int before = state.get(state.size() - 1);
+        int after = state.get(state.size() - 2);
+        boolean equaltion = before - after >= 2 || before - after <= -2;
+        if (state.size() == 2) {
+            return equaltion;
+        }
+        if (equaltion) {
             for (int i = 0; i < state.size() - 1; i++) {
-                if (numberCompare - state.get(i) < 2) {
+                if (state.get(i) == before) {
                     return false;
                 }
             }
+            return true;
         }
-        return true;
+        return false;
     }
 
     public int getN() {
@@ -81,5 +89,14 @@ public class Node {
 
     public void setNeighbours(List<Node> neighbours) {
         this.neighbours = neighbours;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "n=" + n +
+                ", state=" + state +
+                ", neighbours=" + neighbours +
+                '}';
     }
 }

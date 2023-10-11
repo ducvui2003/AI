@@ -13,16 +13,24 @@ public class BFS {
         queue.add(node);
         while (!queue.isEmpty()) {
             Node q = queue.poll();
-            for (int i =0; i< n; i++){
-                q.place(i);
-            }
             List<Node> adjective = q.getNeighbours();
-            for (int i = 0; i < adjective.size(); i++) {
-                Node currentNode = adjective.get(i);
-                if (currentNode.getState().size() == n) {
-                    return currentNode;
-                }
+            if (adjective == null) {
+                return q;
             }
+            for (int i = 0; i < adjective.size(); i++) {
+                queue.add(adjective.get(i));
+            }
+//            List<Node> adjective = q.getNeighbours();
+//            for (int i = 0; i < n; i++) {
+//                Node currentNode = adjective.get(i);
+//                currentNode.place(i);
+//                if (currentNode.getState().size() == n) {
+//                    return currentNode;
+//                }else{
+//                    queue.add(currentNode);
+//                }
+//            }
+
         }
         return null;
     }

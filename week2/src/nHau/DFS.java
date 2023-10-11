@@ -1,7 +1,7 @@
 package nHau;
 
 
-public class DFS {
+public class  DFS {
     public Node dfsUsingStack(Node node, int n) {
 //        ArrayList<Node> result = new ArrayList<>();
 //        Stack<Node> stack = new Stack<>();
